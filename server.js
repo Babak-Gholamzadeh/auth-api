@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connectDB = require('./models/config');
-const { auth } = require('./controllers/auth');
+// const { auth } = require('./controllers/auth');
 
 // Connect to DB
 connectDB();
