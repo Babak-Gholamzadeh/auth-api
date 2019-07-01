@@ -22,16 +22,9 @@ app.use(bodyParser.json());
 app.use('/register', require('./routes/register'));
 // Login Route
 app.use('/login', require('./routes/login'));
-
 // Home Route
-app.get('/', auth, (req, res) => {
-  if(req.user) {
-    res.send('The user authorized, and can access to this page!');
-  }
-  else {
-    res.send('Access to this page has been denied!');
-  }
-});
+app.use('/', require('./routes/home'));
+
 
 // Server listen to the port and waiting for a request
 app.listen(PORT, () => {
