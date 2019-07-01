@@ -52,7 +52,7 @@ authController.register = async (req, res) => {
 authController.login = async (req, res) => {
   try {
     // Exract the require fields form request body
-    let {
+    const {
       email,
       password
     } = req.body;
