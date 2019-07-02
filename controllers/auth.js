@@ -22,6 +22,12 @@ authController.register = async (req, res) => {
     // Validate password field, Not be null or empty, and be at least 3 characters
     validate(password).isEmpty('The password field is required!').lenLessThan(3, 'The password must be at least 3 chatacters!');
 
+    // Check whether the email has already taken, because email must be unique
+    const emailExists = await User.findOne({ email });
+    if(emailExists) {
+      throw new Error('This email has already taken!');
+    }
+
     // Hash the password
     password = bcrypt.hashSync(password, 10);
 
